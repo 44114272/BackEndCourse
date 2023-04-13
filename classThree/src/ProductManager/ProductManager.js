@@ -1,14 +1,14 @@
-import {promises} from 'fs';
+import fs from 'fs';
 
 export default class ProductManager{
     constructor(path) {
         this.path = path;
     };
 
-    getProducts= async () => {
+    getProducts = async () => {
         try {
-            if(promises.existsSync(this.path)){
-                const data = await promises.readFile(this.path, 'utf-8');
+            if(fs.existsSync(this.path)){
+                const data = await fs.readFile(this.path, 'utf-8');
                 const products = JSON.parse(data);
                 return products;
             }else {
@@ -57,7 +57,7 @@ export default class ProductManager{
                 : 
             console.log(`Error: The code: ${product.code} already exist. Try with another.`);
 
-            await promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+            fs.writeFile(this.path, JSON.stringify(products, null, '\t'));
 
             return product;
 
@@ -83,7 +83,7 @@ export default class ProductManager{
                 products.splice(i, 1)
                 }
             })
-            await promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+            fs.writeFile(this.path, JSON.stringify(products, null, '\t'));
             console.log(`Product with id: ${id} was deleted`);
 
         } catch (error) {
@@ -98,7 +98,7 @@ export default class ProductManager{
 
             if (productIndex !== -1) {
                 products[productIndex] = {...products[productIndex], ...newValue}
-                await promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+                fs.writeFile(this.path, JSON.stringify(products, null, '\t'));
                 console.log(await this.getProducts());
             } else {
                 console.log('The product to update was not found')
