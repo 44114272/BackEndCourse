@@ -15,7 +15,7 @@
 		"thumnail": "Without image",
 		"code": "abc456",
 		"stock": 25,
-		"id": 1
+		"id": 2
 	},
 	{
 		"title": "Test product 3",
@@ -24,6 +24,6 @@
 		"thumnail": "Without image",
 		"code": "abc789",
 		"stock": 25,
-		"id": 1
+		"id": 3
 	}
 ]

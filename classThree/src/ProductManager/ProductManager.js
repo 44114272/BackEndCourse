@@ -8,7 +8,7 @@ export default class ProductManager{
     getProducts = async () => {
         try {
             if(fs.existsSync(this.path)){
-                const data = await fs.readFile(this.path, 'utf-8');
+                const data = await fs.promises.readFile(this.path, 'utf-8');
                 const products = JSON.parse(data);
                 return products;
             }else {
@@ -83,7 +83,7 @@ export default class ProductManager{
                 products.splice(i, 1)
                 }
             })
-            fs.writeFile(this.path, JSON.stringify(products, null, '\t'));
+            fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
             console.log(`Product with id: ${id} was deleted`);
 
         } catch (error) {

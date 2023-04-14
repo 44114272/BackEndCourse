@@ -3,7 +3,7 @@ import ProductManager from './ProductManager/ProductManager.js';
 
 const app = express();
 
-const manager = new ProductManager('./products.json');
+const manager = new ProductManager('./src/products.json');
 
 app.use(express.urlencoded({extended: true}));
 
@@ -17,7 +17,7 @@ app.get('/products', async(req,res) => {
 app.get('/products/:id', async(req, res) => {
     const productId = Number(req.params.id);
     const product = await manager.getProductById(productId);
-    if(product) {res.send({product})}
+    if(product) {res.send(product)}
     else {res.send('Product not found')};
 })
 
