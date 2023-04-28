@@ -1,0 +1,17 @@
+<div>
+    <h1>Productos agregados</h1>
+    <form action="/api/products" method="post" id="formdata">
+        <input type="text" placeholder="title" id="title">
+        <input type="text" placeholder="description" id="description">
+        <input type="number" placeholder="price" id="price">
+        <input type="number" placeholder="stock" id="stock">
+        <input type="text" placeholder="category" id="category">
+        <input type="text" placeholder="code" id="code">
+        <button type="submit">Send</button>
+    </form>
+    <div id="container">
+
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

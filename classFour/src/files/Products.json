@@ -1,0 +1,10 @@
+[{
+    "title": "Samsung S23 Ultra",
+		"description": "The last samsung",
+		"price": 1099,
+		"thumbnails": "without image",
+		"code": "001",
+		"stock": 5,
+		"status": true,
+		"category": "samsung"
+}]
