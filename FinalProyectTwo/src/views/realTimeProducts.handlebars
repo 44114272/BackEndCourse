@@ -1,0 +1,10 @@
+<h1>Real time products</h1>
+
+{{#each products}}
+    <h3>{{this.title}}</h3>
+    <p>{{this.description}}</p>
+    <p>{{this.price}}</p>
+{{/each}}
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

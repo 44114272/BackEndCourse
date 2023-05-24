@@ -1,0 +1,24 @@
+<div>
+    <h1>Products</h1>
+    {{#each products.docs}}
+    <p>Titulo: {{this.title}}</p>
+    <p>Descripcion: {{this.description}}</p>
+    <p>Price: {{this.price}}</p>
+    <button onclick="addToCart('{{this._id}}')">Add to Cart</button>
+    {{/each}}
+
+    {{#if hasPrevPage}}
+    <div style="background-color: black; color: white; width: 100px; heigth: 50px; text-align: center; cursor: pointer;">
+        <a 
+            style="all: unset;"
+            href="/students?page={{prevPage}}&limit=5">Anterior</a>
+    </div>
+    {{/if}}
+    {{#if hasNextPage}}
+    <div style="background-color: black; color: white; width: 100px; heigth: 50px; text-align: center; cursor: pointer;">
+        <a 
+            style="all: unset;"
+            href="/students?page={{nextPage}}&limit=5">Siguiente</a>
+    </div>
+    {{/if}}
+</div>
