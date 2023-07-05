@@ -1,10 +1,10 @@
-import { CART_DAO } from "../dao/DaoManagers.js";
+import { CART_DAO } from "../dao/index.js";
 
 class CartServices {
-  getCart = async (id) => await CART_DAO.getCart()
-  createCart = async () => await CART_DAO.addCart();
-  getCartById = async (id) => await CART_DAO.getCartById(id);
-  addProductInCart = async (cid, pid) => await CART_DAO.addProduct(cid, pid)
+  getCart = async () => await CART_DAO.getAll()
+  getCartById = async (id) => await CART_DAO.getById(id);
+  createCart = async () => await CART_DAO.add();
+  addProduct = async (cid, pid) => await CART_DAO.addToCart(cid, pid)
 }
 
 export default CartServices;

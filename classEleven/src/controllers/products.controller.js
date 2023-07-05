@@ -1,8 +1,8 @@
-import {productsServices} from '../services/ProductsManager.js'
+import {productServices} from '../services/ServicesManager.js';
 
 export const getProducts = async(req,res) => {
     try {
-        const products = await productManager.getAll();
+        const products = await productServices.getAll();
 
         const limit = req.query.limit ? parseInt(req.query.limit) : products.length;
         res.send({ status: 'success', payload: products.slice(0, limit) });
@@ -27,7 +27,7 @@ export const addProduct = async(req, res) => {
         }
         const result = await productServices.addProduct(product);
         const io = req.app.get('socketio');
-        io.emit('updateProducts', await productManager.getAll());
+        io.emit('updateProducts', await productServices.getAll());
         res.send({ status: 'success', payload: result })
     } catch (error) {
         console.log(error);
@@ -37,14 +37,14 @@ export const addProduct = async(req, res) => {
 
 export const getProductById = async (req, res) => {
     const prodId = req.params.pid;
-    const product = await productManager.getProductById(prodId)
+    const product = await productServices.getProductById(prodId)
     product ? res.send({ status: 'success', payload: product }) : res.send({ error: 'Product not found' });
 };
 
 export const updateProduct = async (req, res) => {
     const product = req.body;
     const productId = req.params.pid;
-    const result = await productManager.updateProduct(productId, product)
+    const result = await productServices.updateProduct(productId, product)
     result ? res.send({ status: 'success', payload: result }) : res.status(400).send({ status: 'error', error: 'No se puedo actualizar' });
 };
 

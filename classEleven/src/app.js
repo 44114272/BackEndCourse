@@ -1,4 +1,5 @@
 import express from 'express';
+import './dao/dbManagers/dbConfig.js'
 import {__dirname} from './utils.js';
 import productsRouter from './routes/products.router.js';
 import viewsRouter from './routes/views.router.js';
@@ -6,7 +7,6 @@ import cartsRouter from './routes/carts.router.js';
 import Message from './dao/dbManagers/message.js';
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
-import mongoose from 'mongoose';
 import UsersRouter from './routes/users.js';
 import passport from 'passport';
 import initializePassport from './config/passport.js';
@@ -32,17 +32,6 @@ app.use('/api/users', usersRouter.getRouter());
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
-app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500).send('Error no controlado');
-})
-
-
-try {
-    await mongoose.connect('mongodb+srv://joaquinelia:4iOyPwxbtCoxQlmS@cluster39760je.eja9lgp.mongodb.net/ecommerce?retryWrites=true&w=majority')
-} catch (error) {
-    console.log(error);
-}
 const server = app.listen(8080);
 
 const io = new Server(server);
