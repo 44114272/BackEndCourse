@@ -1,4 +1,4 @@
-import { ticketModel } from "../models/ticket.model.js";
+import { ticketModel } from "../models/ticket.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export default class TicketManagerDB {
